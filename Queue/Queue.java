@@ -1,3 +1,4 @@
+package Queue;
 import java.util.Scanner;
 class Queue {
     static int front=-1;
@@ -50,7 +51,7 @@ class Queue {
         {
             System.out.println(arr[i]);
         }
-    }
+
     public static void main(String args[])
     {
         while(true)

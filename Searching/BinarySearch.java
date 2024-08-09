@@ -1,3 +1,4 @@
+package Searching;
 //TC-O(logn)
 //SC-(1)
 import java.util.Scanner;
