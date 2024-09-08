@@ -62,7 +62,6 @@ public class Doubly {
             return;
         }
 
-        // If index is equal to size, addLast should be called
         if (index == size) {
             addLast(data);
             return;
@@ -83,6 +82,74 @@ public class Doubly {
         currNode.next = newNode;
         newNode.prev = currNode;
         size++;
+    }
+
+    public void delFirst()
+    {
+        if(head==null)
+        {
+            System.out.println("Linkedlist is empty");
+            return;
+        }
+          
+        if (head.next == null) {
+            head = null;
+        } else {
+        head=head.next;
+        head.prev=null;
+        }
+        size--;
+    }
+
+    public void delLast()
+    {
+        if(head==null)
+        {
+            delFirst();
+            return;
+        }
+
+        Node currNode=head;
+
+        while(currNode.next!=null)
+        {
+            currNode=currNode.next;
+        }
+        currNode.prev.next=null;
+        size--;
+    }
+
+    public void delMiddle(int index)
+    {
+        if(head==null)
+        {
+            delFirst();
+            return;
+        }
+        
+        if(index<1 || index>size)
+        {
+            System.out.println("Invalid index");
+            return;
+        }
+
+        Node currNode=head;
+
+       for(int i=0;i<index-1;i++)
+       {
+        currNode=currNode.next;
+       }
+       Node nodeTodel=currNode.next;
+
+       if(nodeTodel==null)
+       {
+        currNode.next=null;
+       }
+       else{
+        currNode.next=nodeTodel.next;
+        nodeTodel.next.prev=currNode;
+       }
+       size--;
     }
 
     public void traversal() {
@@ -157,6 +224,12 @@ public class Doubly {
 
         list.addLast(5);
         list.addLast(1);
+
+        list.delFirst();
+
+        list.delLast();
+
+        list.delMiddle(2);
 
         System.out.println("Size of doubly linked list is: " + list.size);
 
