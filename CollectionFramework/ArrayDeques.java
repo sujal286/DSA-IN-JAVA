@@ -13,9 +13,10 @@ public class ArrayDeques {
 
         System.out.println("ArrayDeque: " + ad);
 
-        System.out.println(ad.peek());
+        System.out.println(ad.peekFirst());
+        System.out.println(ad.peekLast());
 
-        System.out.println(ad.poll());
+        System.out.println(ad.pollLast());
 
         System.out.println("ArrayDeque: " + ad);
     }
