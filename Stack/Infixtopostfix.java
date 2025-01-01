@@ -51,15 +51,15 @@ class Infixtopostfix{
     private static String toPostfix(String infix)
     {
       char symbol;
-      String postfix="";
+      StringBuilder postfix=new StringBuilder();
 
       for(int i=0;i<infix.length();i++)
       {
         symbol=infix.charAt(i);
 
-        if(Character.isLetter(symbol))
+        if(Character.isLetterOrDigit(symbol))
         {
-          postfix+=symbol;
+          postfix.append(symbol);
         }
         else if(symbol=='(')
         {
@@ -69,7 +69,7 @@ class Infixtopostfix{
         {
             while(obj.peek()!='(')
             {
-                postfix+=obj.pop();
+                postfix.append(obj.pop());
             }
             obj.pop();
         }
@@ -77,16 +77,16 @@ class Infixtopostfix{
         {
             while (!obj.isEmpty() && obj.peek() != '(' && prec(symbol) <= prec(obj.peek()))
             {
-                postfix+=obj.pop();
+                postfix.append(obj.pop());
             }
             obj.push(symbol);
         }
       }
       while(!obj.isEmpty())
       {
-        postfix+=obj.pop();
+        postfix.append(obj.pop());
       }
-      return postfix;
+      return postfix.toString();
     }
 
     static int prec(char c)
